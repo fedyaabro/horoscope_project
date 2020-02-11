@@ -1,5 +1,4 @@
-from db import list_users, query_user_last_seen
-import datetime
+from samples_p1.db import list_users
 
 
 def reg_user():

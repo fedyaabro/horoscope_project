@@ -1,6 +1,6 @@
 from datetime import datetime as dt, timedelta
 import time
-from db import list_users, query_user_last_seen
+from samples_p1.db import list_users, query_user_last_seen
 
 
 def get_email_login(attemps=3, sleep_duration=10):

@@ -4,26 +4,30 @@ from datetime import datetime as dt
 
 def generate_body(header, paragraphs):
     """генерирует код body"""
-    body = '<h1>' + header + '</h1>'
+    body = f"<h1>{header}</h1>"
     for p in paragraphs:
-        body += '<p>' + p + '</p>'
-    return '<body>' + body + '</body>'
+        body = body + f"\n<p>{p}</p>"
+    return f"<body>{body}\n</body>"
 
 
 def generate_page(head, body):
     """оборачивает переданные аргументы в тег"""
-    page = "<html>" + head + body + '</html>'
+    page = f"<html>{head}{body}</html>"
     return page
 
 
 def generate_head(title):
-    head = "<meta charset='UTF-8'>" + "<title>" + title + "</title>"
-    return "<head>" + head + "</head>"
+    head = f"""<head>
+        <meta charset='UTF-8'>"
+        <title>{title}</title>
+        </head>
+        """
+    return head
 
 
 def save_page(title, header, paragraphs, output="index.html"):
     fp = open(output, "w")
-    today = dt.now().date()
+    # today = dt.now().date()
     page = generate_page(
         head=generate_head(title),
         body=generate_body(header=header, paragraphs=paragraphs)
@@ -32,9 +36,11 @@ def save_page(title, header, paragraphs, output="index.html"):
     fp.close()
 
 
+#####################
+
 today = dt.now().date()
 save_page(
-    title='гороскоп на сегодня',
-    header='что день ' + str(today) + ' нам готовит',
+    title='Гороскоп на сегодня',
+    header=f"Что день {str(today)} нам готовит",
     paragraphs=gen_prophecies()
 )
